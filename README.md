@@ -59,9 +59,9 @@ Program odczytuje wartości energii ze strony https://mojlicznik.energa-operator
 - Uruchom energa2mqtt.py (np: python3 energa2mqtt.py)
 - topic mqtt zostanie będzie ustawiony na /home/mojlicznik/nazwa twojego konta. Możesz to zmienić edytując:
 
-    ```
-    "mqtt_topic_name": "home/mojlicznik/{}/{}",
-    ```
+```
+"mqtt_topic_name": "home/mojlicznik/{}/{}",
+```
 - Do brokera mqtt wysyłane są następujące informacje:
   - name: a_plus dla energii zużytej, a_minus dla oddanej do sieci
   - description: Opis pola - "Eenrgia konsumpcja" albo "Energia produkcja"
@@ -72,33 +72,33 @@ Program odczytuje wartości energii ze strony https://mojlicznik.energa-operator
 
 ### Przykład (z home assistant developer tools):
 
-    ```
-    unit_of_measurement: kWh
-    friendly_name: Licznik Energa produkcja
-    description: Energia produkcja
-    last_update: '2022-07-15 00:00:00'
-    last_refresh: '2022-07-15 21:57:38'
-    value: 1111.111
-    unit: kWh
-    ```
+```
+unit_of_measurement: kWh
+friendly_name: Licznik Energa produkcja
+description: Energia produkcja
+last_update: '2022-07-15 00:00:00'
+last_refresh: '2022-07-15 21:57:38'
+value: 1111.111
+unit: kWh
+```
 
  ### Przykładowa konfiguracja Home Assistant (do wpisania do /config/configuration.yaml)
 
-    ```
-    # Licznik energa    
-    - platform: mqtt
-        name: "Licznik Energa zużycie"
-        json_attributes_topic: "home/mojlicznik/my home account/a_plus"
-        state_topic: "home/mojlicznik/my home account/a_plus"
-        unit_of_measurement: "kWh"
-        value_template: "{{ value_json.value }}"
-    - platform: mqtt
-        name: "Licznik Energa produkcja"
-        json_attributes_topic: "home/mojlicznik/my home account/a_minus"
-        state_topic: "home/mojlicznik/my home account/a_minus"
-        unit_of_measurement: "kWh"
-        value_template: "{{ value_json.value }}"
-    ```
+```
+# Licznik energa    
+- platform: mqtt
+    name: "Licznik Energa zużycie"
+    json_attributes_topic: "home/mojlicznik/my home account/a_plus"
+    state_topic: "home/mojlicznik/my home account/a_plus"
+    unit_of_measurement: "kWh"
+    value_template: "{{ value_json.value }}"
+- platform: mqtt
+    name: "Licznik Energa produkcja"
+    json_attributes_topic: "home/mojlicznik/my home account/a_minus"
+    state_topic: "home/mojlicznik/my home account/a_minus"
+    unit_of_measurement: "kWh"
+    value_template: "{{ value_json.value }}"
+```
 
 W Home assistancie powinniśmy zobaczyć:
 ```
