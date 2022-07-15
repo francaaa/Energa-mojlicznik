@@ -1,11 +1,11 @@
 # Energa "Mój licznik"
 
-## Yet another "scrapping" integration for Energa meters.
+### Yet another "scrapping" integration for Energa meters.
 
 This piece of software can be used to gather energy production and consumption published on https://mojlicznik.energa-operator.pl and send it to mqtt broker. From that point meter readings can be easy picked up by Home Assistant or similar software which is mqtt capable. As this is "local" application the rest od the documentation will be provided in polish. 
 
 
-## Kolejna integracja typu "scrapping" dla strony "Mój licznik" dostawcy Energa. Oczywiście wszystko jest zależne od struktury strony, więc jeśli Energa zmieni coś na stronie koniecznie będą zmiany w kodzie.
+### Kolejna integracja typu "scrapping" dla strony "Mój licznik" dostawcy Energa. Oczywiście wszystko jest zależne od struktury strony, więc jeśli Energa zmieni coś na stronie koniecznie będą zmiany w kodzie.
 
 
 Program odczytuje wartości energii ze strony https://mojlicznik.energa-operator.pl i publikuje je do brokera mqtt.
