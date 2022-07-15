@@ -108,7 +108,7 @@ W Home assistancie powinniśmy zobaczyć:
 
 ---
 
-### Pliki systemd do konfiguracji periodycznego odczytu danych z poiomu użytkownika, można też skorzystać z cron-a (odsyłam do podobnego projektu: https://github.com/PapuutekAPT/Energa-HomeAssistant-Integration#automatyczne-uruchanianie-skryptu)
+### Pliki systemd do konfiguracji periodycznego odczytu danych z poiomu użytkownika, można też skorzystać z cron-a (odsyłam do [podobnego projektu](https://github.com/PapuutekAPT/Energa-HomeAssistant-Integration#automatyczne-uruchanianie-skryptu))
 
 
 Usługa systemd może być uruchamiana z poziomu zwykłego użytkownia. W tym przypadku uzyskujemy możliwość jej rekonfiguracji bez posiadania uprawnień superusera. Dodaj --user po poleceniu systemd np:
