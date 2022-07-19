@@ -118,7 +118,15 @@ systemctl --user status energa2mqtt
 systemctl --user stop energa2mqtt
 
 ```
-Utworz pliki usługi w katalogu:
+
+Najpierw z poziomu root-a wykonaj nastepujące polecenie:
+```
+loginctl enable-linger username
+```
+
+gdzie username to nazwa użytkownika, który będzie uruchamiać usługę systemd
+
+Następnie utworz pliki usługi w katalogu:
 
 ```
 /home/<user>/.config/systemd/user
