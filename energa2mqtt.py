@@ -17,6 +17,7 @@ import paho.mqtt.client as mqtt
 import requests
 from bs4 import BeautifulSoup, NavigableString
 from datetime import datetime
+from time import sleep
 
 from config import *
 
@@ -89,8 +90,10 @@ def get_meter_readings(html):
             value_float = float(value)
             if x == 0:
                 out["a_plus"]["value"] = value_float
+                logging.info("parsed a_plus value: {}".format(value_float))
             if x == 1:
                 out["a_minus"]["value"] = value_float
+                logging.info("parsed a_minus value: {}".format(value_float))
             if x > 2:
                 logging.info(
                     "More than two zones (A+, A-) or two tariffs. This state is not implemented yet. Contact author to obtain updated version."
@@ -170,6 +173,7 @@ def mqtt_send_to_broker(client, account, readings):
     
     for i, (key, value) in enumerate(readings.items()):
         client.publish(mqtt_config["mqtt_topic_name"].format(account["name"], key), json.dumps(readings[key]))
+        sleep(1)
 
 def main():
     try:
