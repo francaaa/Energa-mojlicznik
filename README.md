@@ -1,16 +1,16 @@
-# Energa "Mój licznik"
+# Energa S.A. "Mój licznik"
 
-### Yet another "scrapping" integration for Energa meters.
+### Yet another "scrapping" integration for Energa S.A. meters.
 
-This piece of software can be used to gather energy production and consumption published on https://mojlicznik.energa-operator.pl and send it to mqtt broker. From that point meter readings can be easy picked up by Home Assistant or similar software which is mqtt capable. As this is "local" application the rest od the documentation will be provided in polish. 
+This piece of software can be used to gather energy production and consumption published on https://mojlicznik.energa-operator.pl and send it to mqtt broker. From that point meter readings can be easy picked up by Home Assistant or similar software which is mqtt capable. As this is "local" application so the rest of the documentation will be provided in polish.
 
 
-### Kolejna integracja typu "scrapping" dla strony "Mój licznik" dostawcy Energa. Oczywiście wszystko jest zależne od struktury strony, więc jeśli Energa zmieni coś na stronie koniecznie będą zmiany w kodzie.
+#### Kolejna integracja typu "scrapping" dla strony "Mój licznik" dostawcy Energa. Oczywiście wszystko jest zależne od struktury strony, więc jeśli Energa zmieni coś na stronie koniecznie będą zmiany w kodzie.
 
 
 Program odczytuje wartości energii ze strony https://mojlicznik.energa-operator.pl i publikuje je do brokera mqtt.
 
-- Może zostać uruchomiona "z ręki", z crona (patrz niżej) albo jako usługa systemd (patrz niżej), pewnie także na Windowsie - tego akurat nie sprawdzałem.
+- Może zostać uruchomiony "z ręki", z crona (patrz niżej) albo jako usługa systemd (patrz niżej), pewnie także na Windowsie - czego akurat nie sprawdzałem.
 
 - Napisana w Python 3.9.2 - niewykluczone, że będzie działać w starszych/nowszych wersjach.
 
@@ -22,10 +22,10 @@ Program odczytuje wartości energii ze strony https://mojlicznik.energa-operator
 
 ## Ficzery
 
-- Przesyła odczytane wartości do brokera mqtt    
-- Obsługuje wiele kont (np Twoje, rodziców, albo szwagra), produkcje energii (A-) oraz zużycie (A+)
+- Przesyła odczytane wartości do brokera mqtt
+- Obsługuje wiele kont (np Twoje, rodziców, albo szwagra), produkcję energii (A-) oraz zużycie (A+)
 - Być może obsługuje tylko A+
-- Na pewno nie obsługuje wiecej niż jednej taryfy, lub wiecej niż jednego licznika (nie miałem jak tego sprawdzić --> potrzebne dodatkowe dane --> napisz)
+- Na pewno nie obsługuje wiecej niż jednej taryfy (póki co), lub wiecej niż jednego licznika (nie miałem jak tego sprawdzić --> potrzebne dodatkowe dane --> napisz)
 - Prawdopodobnie zawiera błędy
 
 ## Znane błędy
@@ -35,7 +35,7 @@ Program odczytuje wartości energii ze strony https://mojlicznik.energa-operator
 ## Konfiguracja
 
 
-- Wyedytuj config.py i wpisz swoje dane do konta ze strony moj licznik (account). Ustaw active na True jeśli chesz żeby to konto było sprawdzane.
+- Wyedytuj config.py i wpisz swoje dane do konta ze strony Mój licznik (account). Ustaw active na True jeśli chesz żeby to konto było sprawdzane.
 
     ```
     account = [
@@ -57,14 +57,14 @@ Program odczytuje wartości energii ze strony https://mojlicznik.energa-operator
 
     ```
 - Uruchom energa2mqtt.py (np: python3 energa2mqtt.py)
-- topic mqtt zostanie będzie ustawiony na /home/mojlicznik/nazwa twojego konta. Możesz to zmienić edytując:
+- topic mqtt zostanie będzie ustawiony na /home/mojlicznik/<nazwa twojego konta>. Możesz to zmienić edytując:
 
 ```
 "mqtt_topic_name": "home/mojlicznik/{}/{}",
 ```
 - Do brokera mqtt wysyłane są następujące informacje:
   - name: a_plus dla energii zużytej, a_minus dla oddanej do sieci
-  - description: Opis pola - "Eenrgia konsumpcja" albo "Energia produkcja"
+  - description: Opis pola - "Energia konsumpcja" albo "Energia produkcja"
   - last_update: data i czas kiedy Energa zaktualizowała dane (przeważnie codziennie o północy)
   - last_refresh: data i czas kiedy dane ostani raz zostały odświeżone (kiedy ostatni razy był uruchomiony program)
   - value: wartość odczytu
