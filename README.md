@@ -106,7 +106,25 @@ W Home assistancie powinniśmy zobaczyć:
     - sensor.licznik_energa_zuzycie
 ```
 
----
+### Konfiguracja w przypadku chęci użycia zakładki 'Energy' w Home Assistant
+
+```
+  - name: "Licznik Energa zużycie energy tab"
+    json_attributes_topic: "home/mojlicznik/my home account/a_plus"
+    state_topic: "home/mojlicznik/my home account/a_plus"
+    unit_of_measurement: "kWh"
+    value_template: "{{ value_json.value }}"
+    state_class: total_increasing
+    device_class: energy
+  - name: "Licznik Energa produkcja energy tab"
+    json_attributes_topic: "home/mojlicznik/my home account/a_minus"
+    state_topic: "home/mojlicznik/my home account/a_minus"
+    unit_of_measurement: "kWh"
+    value_template: "{{ value_json.value }}"
+    state_class: total_increasing
+    device_class: energy
+
+```
 
 ### Pliki systemd do konfiguracji periodycznego odczytu danych z poiomu użytkownika, można też skorzystać z cron-a (odsyłam do [podobnego projektu](https://github.com/PapuutekAPT/Energa-HomeAssistant-Integration#automatyczne-uruchanianie-skryptu))
 
